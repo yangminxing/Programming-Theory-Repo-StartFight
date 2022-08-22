@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fd80fa88d1c43439b2e31f6f9de843, type: 3}
   m_Name: Fight
   m_EditorClassIdentifier: 
-  typeId: 1
+  typeId: 2
   name: Flight
   moveSpeed: 40
   life: 50
-  fireMode: 1
+  fireMode: 2
   fireInterval: 2

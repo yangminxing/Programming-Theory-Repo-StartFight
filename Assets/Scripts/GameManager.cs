@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    public List<GameObject> enemyPrefabs;
+    public GameObject player;
+
+    private float enemySpwanInterval = 3;
+
     void Awake()
     {
         if (instance != null) {
@@ -19,12 +24,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine("SpwanTheEnemy");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator SpwanTheEnemy() {
+        while (true) {
+            yield return new WaitForSeconds(enemySpwanInterval);
+
+            int enemyIndex = Random.Range(0, enemyPrefabs.Count);
+
+            Instantiate(enemyPrefabs[enemyIndex]);
+        }
     }
 }

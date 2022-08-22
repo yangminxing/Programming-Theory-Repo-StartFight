@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractUnit : MonoBehaviour
+public abstract class AbstractUnit : MonoBehaviour
 {
-    private float moveSBoundry = -4.6f;
-    private float moveNBoundry = 4.4f;
+    protected float moveNBoundry = 4.4f;
+    protected float moveSBoundry = -4.6f;
     protected float moveEBoundry = 3.1f;
-    private float moveWBoundry = -3.1f;
+    protected float moveWBoundry = -3.1f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    protected float moveOutNBoundry = 7f;
+    protected float moveOutSBoundry = -5f;
+    protected float moveOutEBoundry = 5f;
+    protected float moveOutWBoundry = -5f;
     protected void LimitBoundry()
     {
         if (gameObject.transform.position.x < moveWBoundry)
@@ -42,6 +33,29 @@ public class AbstractUnit : MonoBehaviour
         if (gameObject.transform.position.y > moveNBoundry)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, moveNBoundry);
+        }
+    }
+
+    protected void DestoryOutBoundry()
+    {
+        if (gameObject.transform.position.x > moveOutEBoundry)
+        {
+            Destroy(gameObject);
+        }
+
+        if (gameObject.transform.position.x < moveOutWBoundry)
+        {
+            Destroy(gameObject);
+        }
+
+        if (gameObject.transform.position.y > moveOutNBoundry)
+        {
+            Destroy(gameObject);
+        }
+
+        if (gameObject.transform.position.y < moveOutSBoundry)
+        {
+            Destroy(gameObject);
         }
     }
 }

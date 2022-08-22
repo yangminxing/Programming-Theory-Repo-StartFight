@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fd80fa88d1c43439b2e31f6f9de843, type: 3}
   m_Name: HeavyFight
   m_EditorClassIdentifier: 
-  typeId: 1
-  name: Flight
-  moveSpeed: 40
-  life: 50
-  fireMode: 1
-  fireInterval: 2
+  typeId: 3
+  name: HeavyFlight
+  moveSpeed: 20
+  life: 100
+  fireMode: 3
+  fireInterval: 0.5

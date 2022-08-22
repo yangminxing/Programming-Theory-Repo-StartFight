@@ -30,6 +30,9 @@ public class PlayerBehavier: AbstractUnit
         gameObject.transform.Translate(Vector3.up * Time.deltaTime * verInput * moveSpeed);
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Enter the Trigger");
+    }
 
 }
