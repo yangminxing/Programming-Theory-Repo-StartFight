@@ -25,6 +25,11 @@ public class FireBehavier : MonoBehaviour
     }
 
     public void FireTo(AbstractUnit unit) {
+        if (m_source == null || m_target == null) {
+            Debug.LogError("You must assign the source and target!");
+            return;
+        }
+
         gameObject.transform.Translate((m_target.transform.position - m_source.transform.position).normalized * Time.deltaTime * moveSpeed);
     }
 }
