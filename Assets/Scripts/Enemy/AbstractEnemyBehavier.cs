@@ -6,10 +6,10 @@ public abstract class AbstractEnemyBehavier : AbstractUnit
 {
     public GameObject primaryFireObject;
     public GameObject secondaryFireObject;
+    public float life;
+
     private float fireInterval = 2f;
-
     private GameObject player;
-
     private float spwanYPos = 6;
     private float spwanXMaxPos;
     private float spwanXMinPos;
@@ -59,7 +59,8 @@ public abstract class AbstractEnemyBehavier : AbstractUnit
     }
 
     protected void FireOnce(GameObject fireOjbect) {
-        FireBehavier fireBehavier = Instantiate(fireOjbect, gameObject.transform.position, fireOjbect.transform.rotation).GetComponent<FireBehavier>();
+        FireBehavier fireBehavier = Instantiate(fireOjbect, gameObject.transform.position, 
+            fireOjbect.transform.rotation).GetComponent<FireBehavier>();
         fireBehavier.SetSourceAndTarget(gameObject.GetComponent<AbstractEnemyBehavier>(), player.GetComponent<PlayerBehavier>());
     }
 
@@ -69,5 +70,18 @@ public abstract class AbstractEnemyBehavier : AbstractUnit
 
     protected void FIreTwiceRapidly(GameObject fireOjbect) { 
     
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerFire"))
+        {
+            life -= collision.GetComponent<FireBehavier>().damage;
+            if (life <= 0)
+            {
+                Destroy(gameObject);
+            }
+            Destroy(collision.gameObject);
+        }
     }
 }

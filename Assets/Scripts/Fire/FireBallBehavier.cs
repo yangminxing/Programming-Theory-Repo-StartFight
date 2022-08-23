@@ -12,5 +12,7 @@ public class FireBallBehavier : FireBehavier
     void Update()
     {
         MoveStraight();
+
+        DestoryOutBoundry();
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FireBehavier : AbstractUnit
 {
-    protected float moveSpeed;
-    protected float damage;
 
+    public float damage;
+
+    protected float moveSpeed;
     // define who open fire
     private AbstractUnit m_source;
 
@@ -16,33 +17,38 @@ public class FireBehavier : AbstractUnit
     private Vector3 originSourcePos;
     private Vector3 originTargetPos;
 
-    private bool isTrack = false;
-
+    private bool hasTrack;
 
     private void LateUpdate()
     {
-        DestoryOutBoundry();
+       
     }
 
-    protected void MoveStraight()
+    public void MoveStraight()
     {
-        if (originTargetPos != null)
+        if (m_target != null)
         {
             Vector2 direction = new Vector2(originTargetPos.x - originSourcePos.x, originTargetPos.y - originSourcePos.y);
 
             gameObject.transform.up = direction;
             gameObject.transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
         }
+        gameObject.transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
     }
 
     protected void MoveTrack()
     {
-        if (originTargetPos != null)
+        if (m_target != null && m_source != null)
         {
             Vector2 direction = new Vector2(m_target.transform.position.x - m_source.transform.position.x, m_target.transform.position.y - m_source.transform.position.y);
 
             gameObject.transform.up = direction;
             gameObject.transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
+
+            hasTrack = true;
+        }
+        else if (hasTrack) {
+            Destroy(gameObject);
         }
     }
 

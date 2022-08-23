@@ -12,5 +12,7 @@ public class FireThawBehavier : FireBehavier
     void Update()
     {
         MoveStraight();
+
+        DestoryOutBoundry();
     }
 }

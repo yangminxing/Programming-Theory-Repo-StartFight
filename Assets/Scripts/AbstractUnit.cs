@@ -10,7 +10,7 @@ public abstract class AbstractUnit : MonoBehaviour
     protected float moveWBoundry = -3.1f;
 
     protected float moveOutNBoundry = 7f;
-    protected float moveOutSBoundry = -5f;
+    protected float moveOutSBoundry = -6f;
     protected float moveOutEBoundry = 5f;
     protected float moveOutWBoundry = -5f;
     protected void LimitBoundry()
